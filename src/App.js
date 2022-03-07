@@ -9,6 +9,7 @@ import Divider from '@mui/material/Divider';
 
 const App =(history)=>{
     const [books, setBooks] = useState({});
+    const [reRender, setReRender] = useState(false);
     const wantToRead = [];
     const read = [];
     const currentread = [];
@@ -17,25 +18,23 @@ const App =(history)=>{
         gridTemplateColumns: "repeat(5, 1fr)",
         paddingTop: '10px',
       };
-    const getAllBooks = () => {
-        BooksApi.getAll().then((books) => {
-          const booksDict = {};
-          for (const book of books) {
-            booksDict[book.id] = book;
-          }
-          setBooks(booksDict)
-        });
-        Object.entries(books).map(([key, value]) => {switch(value.shelf){
-            case'currentlyReading': currentread.push(value); break;
-            case'wantToRead': wantToRead.push(value); break;
-            case'read': read.push(value); break;
-            }},
-            )
-      };
+
     const trigger =()=>{
-        getAllBooks();}
+        setReRender(!reRender);}
     useEffect(()=>{
-        getAllBooks();
+        BooksApi.getAll().then((books) => {
+            const booksDict = {};
+            for (const book of books) {
+              booksDict[book.id] = book;
+            }
+            setBooks(booksDict)
+          });
+          Object.entries(books).map(([key, value]) => {switch(value.shelf){
+              case'currentlyReading': currentread.push(value); break;
+              case'wantToRead': wantToRead.push(value); break;
+              case'read': read.push(value); break;
+              }},
+              )
     },[])
     return (
         <div>
