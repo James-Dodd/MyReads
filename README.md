@@ -1,3 +1,14 @@
+# here is the my reads app
+here you can keep track of books you have read or want to read or even currently reading 
+the instructions for using the app are below 
+i hope you enjoy using this app
+
+## how to run dev
+to run the code in dev use npm i first then run the code using npm start
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
