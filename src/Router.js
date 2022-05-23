@@ -28,6 +28,7 @@ const Router = () => {
           path="/search"
           element={<SerchPage bookstate={books} trigger={trigger} />}
         />
+        <Route path="*" element={<App books={books} trigger={trigger} />} />
       </Routes>
     </BrowserRouter>
   );
